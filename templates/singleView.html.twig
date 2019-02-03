@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title 'Mon article' %}
+  {% block body %}
+      <div class="d-flex justify-content-center">
+        <div class="card text-center" style="width: 18rem;">
+          <div class="card-body">
+            {% for article in article %}
+              <p class="card-text">{{ article.id }}</p>
+              <h5 class="card-title text-danger text-center">{{ article.Titre }}</h5>
+              <p class="card-text">{{ article.Contenu }}</p>
+              <p class="card-text">Créer le : {{ article.Création }}</p>
+              <p class="card-text">Auteur : {{ article.Auteur }}</p>
+              <p class="card-text">Ca&tégorie : {{ article.Catégorie }}.</p>
+              <p class="card-text">Vue : {{ article.NbVue }} fois.</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  {% endblock %}
+
