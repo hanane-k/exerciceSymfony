@@ -2,6 +2,9 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
-accueil:
-    path: /accueilController
-    controller: App\controller\accueilController::accueil
+# accueil:
+#     path: /accueilController
+#     controller: App\controller\accueilController::accueil
+
+app_logout :
+    path : /logout

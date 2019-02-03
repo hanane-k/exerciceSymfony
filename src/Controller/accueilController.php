@@ -5,7 +5,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\article;
 use App\Repository\articleRepository;
-use App\src\servises\pasInsulte;
+use App\servises\pasInsulte;
+
 class accueilController extends AbstractController
 {
 
@@ -19,7 +20,7 @@ class accueilController extends AbstractController
         $article = new article();
         echo "<h2 class='text-center m-5 border-bottom border-dark pb-5'>la page qui affiche la liste des articles</h2>";
         $articleManager = $this->getDoctrine()->getRepository(article::class);
-        $articles = $articleManager->findAll();
+        $articles = $articleManager->findById();
         return $this->render('listeView.html.twig', ['articles' => $articles]);
     }
 
@@ -32,13 +33,14 @@ class accueilController extends AbstractController
         # la fonction qui affiche un article 
         public function single($id) {
             // $article = new article();
-            echo "<h2 class='text-center m-5 border-bottom border-dark pb-5'>Article N° : $id</h2>";
             $articleManager = $this->getDoctrine()->getRepository(article::class);
-            $articles = $articleManager
-            // ->pasInsultes()
-            ->find($id);
+            echo "<h2 class='text-center m-5 border-bottom border-dark pb-5'>Article N° : $id</h2>";
+            $article = $articleManager->find($id);
+            $Contenu = $article->getContenu();
+            // if(pasInsultes($article->getContenu())) {
+                return $this->render('singleView.html.twig', ['article' => $article, 'id' => $id, 'Contenu' => $Contenu]);
+            // }
             
-            return $this->render('singleView.html.twig', ['article' => 'article', 'id' => $id]);                
         }
 
     

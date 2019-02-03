@@ -5,14 +5,15 @@ use Doctrine\ORM\Mapping as ORM;
 
 class pasInsulte
 {
-    public function pasInsultes()
+    public function pasInsultes($Contenu)
     {
         $mots = "#fdp|pd|^con$#i";
         if(!preg_match($mots, $Contenu)){
             echo $Contenu;
         }
         else {
-            echo '#####';
+            preg_remplace($mots, "#####", $contenu);
         }
+        return $Contenu;
     }
 }
